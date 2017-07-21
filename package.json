@@ -1,0 +1,102 @@
+{
+  "name": "react-mobx-template",
+  "version": "1.1.0",
+  "description": "Template with React, MobX, React Router 4, Webpack 3, Hot Reload 3, Airbnb's ESLint, and an Express API",
+  "author": "Alex Marmon",
+  "license": "MIT",
+  "repository": "https://github.com/alexmarmon/react-mobx-template.git",
+  "scripts": {
+    "dev": "node server.js",
+    "lint": "eslint --ext .js --ext .jsx src/; exit 0",
+    "lint-fix": "eslint --fix --ext .js --ext .jsx src/; exit 0",
+    "build": "webpack --config node_modules/@lofty/lofty-webpack/webpack.prod.js --progress --colors --optimize-minimize",
+    "production": "node server.js"
+  },
+  "keywords": [
+    "react",
+    "mobx",
+    "hot reload 3",
+    "template",
+    "starter-kit",
+    "react router 4",
+    "webpack 3"
+  ],
+  "eslintConfig": {
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "globals": {
+      "document": true,
+      "fetch": true,
+      "console": true,
+      "it": true,
+      "describe": true,
+      "window": true
+    },
+    "rules": {
+      "no-console": 0,
+      "window": 0,
+      "jsx-a11y/no-static-element-interactions": 0,
+      "radix": 0,
+      "forbid-prop-types": 0,
+      "react/forbid-prop-types": 0,
+      "no-nested-ternary": 0,
+      "max-len": 0,
+      "react/require-default-props": 0,
+      "react/jsx-wrap-multilines": 0,
+      "import/first": 0,
+      "no-undef": 0
+    }
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "stage-1",
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-decorators-legacy",
+      "transform-class-properties",
+      "react-hot-loader/babel"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.1.0",
+    "isomorphic-fetch": "^2.2.1",
+    "jsdom": "^11.0.0",
+    "mocha": "^3.2.0",
+    "react-addons-test-utils": "^15.5.1"
+  },
+  "dependencies": {
+    "@lofty/lofty-webpack": "latest",
+    "animejs": "^2.0.2",
+    "body-parser": "^1.15.2",
+    "chai": "^4.0.2",
+    "chai-http": "^3.0.0",
+    "compression": "^1.6.2",
+    "enzyme": "^2.8.2",
+    "eslint-plugin-import": "^2.7.0",
+    "express": "^4.15.2",
+    "knex": "^0.13.0",
+    "lofty-npm-template": "latest",
+    "mobx": "^3.1.9",
+    "mobx-react": "^4.1.8",
+    "mysql": "^2.13.0",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-hot-loader": "next",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "svg.js": "^2.6.3",
+    "webpack-dev-server": "^2.5.1"
+  }
+}

@@ -1,0 +1,15 @@
+@import "../../shared_styles/_variables";
+@import "../../shared_styles/_mixins";
+
+.splash-module {
+  a {
+    display: block;
+    margin-top: 5px;
+  }
+  svg {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 100px;
+    width: 100px;
+  }
+}
