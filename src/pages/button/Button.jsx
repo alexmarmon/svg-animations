@@ -10,10 +10,9 @@ class Button extends Component {
     };
 
     this.toCircle = anime({
-      targets: '#sign-in-svg path',
-      // d: 'M95,69.5 C103.780634,69.5 111.702569,65.9633657 117.178379,59.7935043 C121.885905,54.4893051 124.5,47.5544041 124.5,40 C124.5,31.2836819 121.015252,23.4123512 114.92513,17.9391748 C109.605803,13.1587093 102.618327,10.5 95,10.5 C86.3533483,10.5 78.5369824,13.9289819 73.0674711,19.9330762 C68.207501,25.2680535 65.5,32.3123835 65.5,40 C65.5,47.9055058 68.3638594,55.1276966 73.4767661,60.5067681 C78.9293123,66.2431599 86.5720906,69.5 95,69.5 Z',
-      strokeDasharray: '510',
-      strokeDashoffset: '-510px',
+      targets: '#sign-in-path',
+      strokeDasharray: '145,600',
+      strokeDashoffset: '-410px',
       duration: 700,
       loop: false,
       easing: 'easeInOutSine',
@@ -21,13 +20,16 @@ class Button extends Component {
     });
 
     this.spinCircle = anime({
-      targets: '#sign-in-svg path',
+      targets: '#sign-in-path',
       rotate: -360,
       easing: 'easeInOutSine',
       duration: 1000,
       autoplay: false,
       loop: true,
     });
+
+    // this needs to be set after the svg is formed into a circle
+    this.toCheck = null;
   }
 
   componentDidUpdate() {
@@ -40,13 +42,15 @@ class Button extends Component {
       document.getElementById('sign-in-path').style.transition = `transform ${timeLeft}ms`;
       // add transition back to original spot
       document.getElementById('sign-in-path').classList.add('rotate-back');
+      // animate to check
+      this.toCheck.play();
     }
   }
 
   getRequest = () => {
     setTimeout(() => {
       this.setState({ auth: true });
-    }, 2700);
+    }, 1500);
   }
 
   signIn = () => {
@@ -58,22 +62,42 @@ class Button extends Component {
     this.toCircle.finished.then(() => this.spinCircle.play());
     // get api request
     this.toCircle.finished.then(() => this.getRequest());
+    // create toCheck function
+    this.toCircle.finished.then(() => {
+      this.toCheck = anime({
+        targets: '#sign-in-path',
+        strokeDasharray: '135,700',
+        strokeDashoffset: '-700px',
+        duration: 700,
+        loop: false,
+        easing: 'easeInOutSine',
+        autoplay: false,
+      });
+    });
   }
 
   render = () => (
     <div className="button-module">
       <div className="container">
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
+        <div className="input-container">
+          <input type="text" placeholder="Username" />
+        </div>
+        <div className="input-container">
+          <input type="password" placeholder="Password" />
+        </div>
         <div className="button-container">
-          <svg id="sign-in-svg" width="190" height="80" viewBox="0 0 190 80">
-            <path id="sign-in-path" strokeDasharray="500" style={{ strokeDashoffset: '0px', transformOrigin: '50% 50%' }} d="M76,70 L184,70 C187,70 189,68 189,65 L189,14.8867188 C189,12 187,10 184,10 L6,10 C3,10 1,12 1,15 L1,65 C1,68 3,70 6,70 L95,70 C113,70 125,56 125,40 C125,24 113,10 95,10 C77,10 65,24 65,40 C65,48 67.6666667,55 73,61" fill="none" strokeWidth="1" stroke="#fff" />
-          </svg>
-          <div id="sign-in-button" className="button" onClick={this.signIn}>Sign In</div>
-          <svg id="sign-up-svg" width="190" height="80" viewBox="0 0 190 80">
-            <path d="M6,70 L184,70 C187,70 189,68 189,65 L189,14.8867188 C189,12 187,10 184,10 L6,10 C3,10 1,12 1,15 L1,65 C1,68 3,70 6,70 Z" fill="none" strokeWidth="1" stroke="#fff" />
-          </svg>
-          <div className="button">Sign Up</div>
+          <div className="left-button">
+            <svg id="sign-in-svg" width="150" height="56" viewBox="0 0 150 56">
+              <path id="sign-in-path" strokeDasharray="400,400" style={{ strokeDashoffset: '0px', transformOrigin: '50% 50%' }} d="M62.2980591,55 L144,55 C147,55 149,53 149,50 L149,5.88671875 C149,3 147,1 144,1 L6,1 C3,1 1,3 1,6 L1,50 C1,53 3,55 6,55 L75,55 C89.9100037,55 102,42.9099998 102,28 C102,13.0900002 89.9100037,1 75,1 C60.0900002,1 48,13.0900002 48,28 C48,42.9099998 60.0899963,55 75,55 C89.9100037,55 102,42.9099998 102,28 C102,13.0900002 89.9100037,1 75,1 C59,2 60,17 64,23 C66.6666667,27 70.3333333,31 75,35 L88,18" fill="none" strokeWidth="1" stroke="#fff" />
+            </svg>
+            <div id="sign-in-button" className="button" onClick={this.signIn}>Sign In</div>
+          </div>
+          <div className="right-button">
+            <svg id="sign-up-svg" width="150" height="56" viewBox="0 0 150 56">
+              <path id="sign-up-path" strokeDasharray="400,400" style={{ strokeDashoffset: '0px', transformOrigin: '50% 50%' }} d="M62.2980591,55 L144,55 C147,55 149,53 149,50 L149,5.88671875 C149,3 147,1 144,1 L6,1 C3,1 1,3 1,6 L1,50 C1,53 3,55 6,55 L75,55 C89.9100037,55 102,42.9099998 102,28 C102,13.0900002 89.9100037,1 75,1 C60.0900002,1 48,13.0900002 48,28 C48,42.9099998 60.0899963,55 75,55 C89.9100037,55 102,42.9099998 102,28 C102,13.0900002 89.9100037,1 75,1 C59,2 60,17 64,23 C66.6666667,27 70.3333333,31 75,35 L88,18" fill="none" strokeWidth="1" stroke="#fff" />
+            </svg>
+            <div className="button">Sign Up</div>
+          </div>
         </div>
         <a>forgot password?</a>
       </div>

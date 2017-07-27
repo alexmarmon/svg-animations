@@ -5,6 +5,7 @@
   $outerWidth: 450px;
   $innerWidth: 340px;
   $fontSize: 20px;
+  $smallFontSize: 18px;
 
   text-align: center;
   .line {
@@ -26,7 +27,7 @@
     border-radius: 35px;
     box-shadow: 0 14px 40px rgba(0,0,0,0.40), 0 10px 100px rgba(0,0,0,0.22);
     margin: 0 auto;
-    padding-top: 100px;
+    padding-top: 90px;
     box-sizing: border-box;
   }
 
@@ -34,8 +35,30 @@
     font-family: "Raleway", sans-serif;
     font-size: $fontSize;
     font-weight: 300;
-    color: $white;
+    color: $offWhite;
     letter-spacing: 2px;
+  }
+
+  .input-container {
+    position: relative;
+    width: $innerWidth;
+    margin: 0 auto;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 2px;
+      width: 0px;
+      background-color: $darkGrey;
+      transition: width .3s;
+    }
+    &:hover {
+      &:after {
+        width: 100%;
+      }
+    }
   }
 
   input {
@@ -65,43 +88,56 @@
     box-sizing: border-box;
     position: relative;
     width: $innerWidth;
-    height: 60px;
-    margin: 20px auto 0 auto;
+    height: 56px;
+    margin: 10px auto 0 auto;
   }
 
   .button {
     box-sizing: border-box;
-    height: 60px;
-    width: 190px;
+    height: 56px;
+    width: 150px;
     display: inline-block;
     // border: 1px solid $white;
     border-radius: 3px;
-    line-height: 58px;
+    line-height: 55px;
     position: absolute;
     top: 0;
     cursor: pointer;
     user-select: none;
-    transition: opacity 1s;
+    transition: opacity 1s, color .3s;
     overflow: hidden;
-    &:nth-of-type(1) {
-      left: 0;
-    }
-    &:nth-of-type(2) {
-      right: 0;
-    }
     &.hide {
       opacity: 0;
     }
   }
 
-  .button-container svg {
-    position: absolute;
-    top: -10px;
-    &:nth-of-type(1) {
+  .left-button {
+    .button, svg {
       left: 0;
     }
-    &:nth-of-type(2) {
+  }
+
+  .right-button {
+    .button, svg {
       right: 0;
+    }
+  }
+
+  .left-button, .right-button {
+    &:hover {
+      .button {
+        color: $lightGrey;
+      }
+      svg path {
+        stroke: $lightGrey;
+      }
+    }
+  }
+
+  .button-container svg {
+    position: absolute;
+    path {
+      transition: stroke .3s;
     }
   }
 
@@ -109,9 +145,13 @@
     display: block;
     margin-top: 50px;
     text-transform: capitalize;
-    font-size: $fontSize;
+    font-size: $smallFontSize;
     cursor: pointer;
     user-select: none;
+    transition: color .3s;
+    &:hover {
+      color: $lightGrey;
+    }
   }
 
   .rotate-back {

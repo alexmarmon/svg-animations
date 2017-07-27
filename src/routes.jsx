@@ -4,6 +4,7 @@ import Header from './shared_modules/header/header';
 import Smil from './pages/smil/Smil';
 import Libraries from './pages/libraries/Libraries';
 import Button from './pages/button/Button';
+import Splash from './pages/splash/Splash';
 
 // include scss
 import './shared_styles/base.scss';
@@ -16,6 +17,7 @@ const Routes = (() =>
       <Route exact path="/" component={() => <Smil />} />
       <Route path="/libraries" component={() => <Libraries />} />
       <Route path="/button" component={() => <Button />} />
+      <Route path="/splash" component={() => <Splash />} />
     </div>
   </BrowserRouter>
 );

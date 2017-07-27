@@ -2,14 +2,41 @@
 @import "../../shared_styles/_mixins";
 
 .splash-module {
-  a {
-    display: block;
-    margin-top: 5px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: $lightGrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: all .8s;
+
+  &.leave {
+    height: 0px;
   }
+
   svg {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    height: 100px;
-    width: 100px;
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+    margin-top: -50px;
+    transition: all .8s;
+    &.enter {
+      height: 300px;
+      width: 300px;
+      opacity: 1;
+    }
+    &.leave {
+      margin-top: -500px;
+    }
+  }
+
+  polygon {
+    // transition: all .8s;
+    // transform-origin: center;
+    // transform: matrix(1, 0, 0, 1, 0, 0);
   }
 }
