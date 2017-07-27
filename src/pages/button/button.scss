@@ -2,6 +2,10 @@
 @import "../../shared_styles/_mixins";
 
 .button-module {
+  $outerWidth: 450px;
+  $innerWidth: 340px;
+  $fontSize: 20px;
+
   text-align: center;
   .line {
     height: 40px;
@@ -17,25 +21,25 @@
 
   .container {
     background-image: linear-gradient(60deg, #09203f 0%, #537895 100%);
-    width: 600px;
-    height: 600px;
+    width: $outerWidth;
+    height: $outerWidth;
     border-radius: 35px;
     box-shadow: 0 14px 40px rgba(0,0,0,0.40), 0 10px 100px rgba(0,0,0,0.22);
     margin: 0 auto;
-    padding-top: 150px;
+    padding-top: 100px;
     box-sizing: border-box;
   }
 
   a, input, .button {
     font-family: "Raleway", sans-serif;
-    font-size: 22px;
+    font-size: $fontSize;
     font-weight: 300;
     color: $white;
     letter-spacing: 2px;
   }
 
   input {
-    width: 420px;
+    width: $innerWidth;
     box-sizing: border-box;
     border: none;
     border-bottom: 1px solid $white;
@@ -60,7 +64,7 @@
   .button-container {
     box-sizing: border-box;
     position: relative;
-    width: 420px;
+    width: $innerWidth;
     height: 60px;
     margin: 20px auto 0 auto;
   }
@@ -103,10 +107,14 @@
 
   a {
     display: block;
-    margin-top: 80px;
+    margin-top: 50px;
     text-transform: capitalize;
-    font-size: 20px;
+    font-size: $fontSize;
     cursor: pointer;
     user-select: none;
+  }
+
+  .rotate-back {
+    transform: rotate(-360deg) !important;
   }
 }

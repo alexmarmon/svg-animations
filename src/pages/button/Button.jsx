@@ -5,11 +5,6 @@ import './button.scss';
 
 class Button extends Component {
   componentDidMount() {
-    // run anime.js
-    // setTimeout(() => {
-    //   this.start().play();
-    // }, 1000);
-
     this.state = {
       auth: false,
     };
@@ -37,35 +32,21 @@ class Button extends Component {
 
   componentDidUpdate() {
     if (this.state.auth) {
-      this.spinCircle.loop = false;
-      this.spinCircle.play();
-      document.getElementById('sign-in-path').classList.add('rorate-back');
-    } else {
-      console.log('nope');
+      // pause animation
+      this.spinCircle.pause();
+      // get remaining animation time
+      const timeLeft = this.spinCircle.duration - this.spinCircle.currentTime;
+      // add remaining animation time to css
+      document.getElementById('sign-in-path').style.transition = `transform ${timeLeft}ms`;
+      // add transition back to original spot
+      document.getElementById('sign-in-path').classList.add('rotate-back');
     }
   }
 
-  // start = () => anime({
-  //   targets: '.el',
-  //   translateX: 250,
-  //   loop: false,
-  //   autoplay: false,
-  // });
-
-  // toCircle = () => {
-  //   const element = Snap('#sign-in-svg path');
-  //   const newPath = 'M95.0999355,69.4998472 C103.840729,69.4731176 111.723351,65.9399499 117.178379,59.7935043 C121.885905,54.4893051 124.5,47.5544041 124.5,40 C124.5,31.2836819 121.015252,23.4123512 114.92513,17.9391748 C109.605803,13.1587093 102.618327,10.5 95,10.5 C86.3533483,10.5 78.5369824,13.9289819 73.0674711,19.9330762 C68.207501,25.2680535 65.5,32.3123835 65.5,40 C65.5,47.8682959 68.3369635,55.0596942 73.4047188,60.4306905 L95.0999355,69.4998472 Z';
-  //   element.animate({ d: newPath }, 300, () => [0.445, 0.05, 0.55, 0.95]);
-  //
-  //   setTimeout(() => {
-  //     const matrix = new Snap.Matrix();
-  //     matrix.rotate(360, 30, 30);
-  //   }, 250);
-  // }
   getRequest = () => {
     setTimeout(() => {
       this.setState({ auth: true });
-    }, 2500);
+    }, 2700);
   }
 
   signIn = () => {

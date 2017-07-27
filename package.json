@@ -1,7 +1,7 @@
 {
-  "name": "react-mobx-template",
-  "version": "1.1.0",
-  "description": "Template with React, MobX, React Router 4, Webpack 3, Hot Reload 3, Airbnb's ESLint, and an Express API",
+  "name": "svg-animations",
+  "version": "1.0.0",
+  "description": "Svg animations using ",
   "author": "Alex Marmon",
   "license": "MIT",
   "repository": "https://github.com/alexmarmon/react-mobx-template.git",
