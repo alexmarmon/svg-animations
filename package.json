@@ -8,9 +8,7 @@
   "scripts": {
     "dev": "node server.js",
     "lint": "eslint --ext .js --ext .jsx src/; exit 0",
-    "lint-fix": "eslint --fix --ext .js --ext .jsx src/; exit 0",
-    "build": "webpack --config node_modules/@lofty/lofty-webpack/webpack.prod.js --progress --colors --optimize-minimize",
-    "production": "node server.js"
+    "lint-fix": "eslint --fix --ext .js --ext .jsx src/; exit 0"
   },
   "keywords": [
     "react",
